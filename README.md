@@ -35,13 +35,13 @@ Built using flexible CSS Flexbox containers and viewport meta tags to provide a 
 Screenshots
 
 ### Student Profile
-![Student Profile View](screenshots/activity 5 default.png)
+![Student Profile View](screenshots/activity-5-default.png)
 
 ### Edit Profile Interface
-![Edit Profile Form](screenshots/activity 5 edit profile.png)
+![Edit Profile Form](screenshots/activity-5-edit-profile.png)
 
 ### Updated Profile
-![Updated Profile View](screenshots/activity 5 updated profile.png)
+![Updated Profile View](screenshots/activity-5-updated-profile.png)
 
 ### Contact Section
-![Contact View](screenshots/activity 5 contact.png)
+![Contact View](screenshots/activity-5-contact.png)
