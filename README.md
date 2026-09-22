@@ -1,54 +1,32 @@
-# Mobile UI/UX Student Profile
-
-An upgraded, responsive, accessible Student Profile built using HTML and CSS, bundled for Android via Apache Cordova.
+# Activity 4: Multi-Page Student Profile Application
 
 ## 1. Project Description
-This application serves as a digital student profile. It highlights my personal background information, interests, education, goals, and technical skill sets.
+This application is a responsive, multi-page Student Profile mobile app built using Apache Cordova, standard HTML5, and modern CSS3. It reorganizes a single-page student profile into dedicated, accessible sections that showcase personal details, technical skills, academic projects, and contact avenues.
 
-## 2. Application Structure
-Header: houses the user profile avatar, complete name, subtitle, and primary navigation bar.<br>
-Navigation Menu: accessible links allowing intra-page navigation between sections.<br>
-About Section: contains background information, personal interests, education details, and future aspirations.<br>
-Skills Section: itemizes core technical skills alongside clear descriptive details.<br>
-Footer: displays my copyright notice and year.
+## 2. Application Pages
+The application is structured into five distinct pages:
+- **Profile (index.html):** Serves as the primary entry point/homepage featuring a high-level overview, profile photo, and core introduction.
+- **About (about.html):** Details educational background, personal background, interests, and professional aspirations.
+- **Skills (skills.html):** Displays a structured breakdown of technical competencies across web development, programming, database administration, and developer tools.
+- **Projects (projects.html):** Highlights featured academic and personal software projects, roles held, and underlying technologies used.
+- **Contact (contact.html):** Provides functional contact endpoints (Email, GitHub, LinkedIn) and a structured messaging form layout.
 
-## 3. Responsive Design
-The application utilizes a mobile-first fluid layout implemented with standard CSS media queries.<br>
-Mobile: Single-column stacked layout avoiding horizontal scroll.<br>
-Tablet: Flexible inline header alignment and enhanced padding for medium screens.<br>
-Desktop: Two-column grid layout utilizing screen real estate efficiently while keeping line lengths comfortable to read.
+## 3. Navigation Implementation
+Navigation across pages is implemented using standard HTML anchor tags (`<a href="...">`). No JavaScript is used for dynamic routing or dynamic page loading, ensuring static accessibility and clean multi-page compilation within Apache Cordova. Active page state is styled via CSS (`class="active"`).
 
-## 4. UI/UX Principles Applied
-Responsive Layout: Fluid width styling combined with CSS Grid/Flexbox to prevent overflow and text truncation.<br>
-Mobile-Friendly Spacing: Standardized outer padding and margins ensure distinct boundaries between text blocks and cards.<br>
-Appropriate Typography: Uses scalable font sizes, high line-height, and modern system font stacks for optimal readability.<br>
-Clear Visual Hierarchy: Distinct font weights and colors separate section titles, subtitles, bold labels, and body copy.<br>
-Usable Controls: Touch-friendly navigation targets designed with minimum click targets and clear hover/focus indicators.<br>
-Basic Accessibility: Contrast-compliant background colors, semantic HTML structural tags, dynamic image alt text, and clear focus styling.<br>
-Consistent Design: Utilizes CSS custom variables for color scheme, font stacks, border radiuses, and spacing patterns.
+## 4. Responsive Design
+The app adheres to fluid, mobile-first design principles using CSS Flexbox and CSS Grid:
+- **Mobile Viewports (<600px):** Navigation stacks vertically, and skill/project cards render in a single column to prevent horizontal scrolling or overflowing elements.
+- **Tablet Viewports (600px - 899px):** Navigation aligns horizontally alongside the brand title, and content cards arrange into 2-column grids.
+- **Desktop Viewports (≥900px):** Content expands into a centered 3-column layout maintaining maximum readability standards.
 
-## 5. Navigation
-The intra-page navigation uses native HTML anchor links. It requires zero JavaScript and relies on standard HTML document fragment identifier scrolling with CSS.
+## 5. UI/UX Principles Applied (Module 4)
+- **Consistency:** Standardized palette (`#1e3a8a`, `#2563eb`), uniform margins, typography specs, and navigation across all 5 pages.
+- **Visual Hierarchy:** Distinct heading styling (`h1`, `h2`), bold element identifiers, and card elevation shadows highlight priority information.
+- **Usability & Readability:** High-contrast text against dark/light backgrounds ensures legibility. Navigational indicators visually declare current screen positioning.
 
-## 6. How to Run
-
-# Clean previous builds
-cordova clean android
-
-# Build the Android APK
-cordova build android
-
-# Run android
-cordova run android
-
-
-## 7. Application Screenshots
-
-### Desktop Layout
-![Desktop View](screenshots/desktop.png)
-
-### Tablet Layout
-![Tablet View](screenshots/tablet.png)
-
-### Mobile Layout
-![Mobile View](screenshots/mobile.png)
+## 6. How to Build and Run (Cordova)
+1. Ensure Node.js, Cordova CLI, and Android SDK are properly installed.
+2. Open terminal in the project directory:
+   ```bash
+   cd <LastName>_StudentProfile
