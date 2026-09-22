@@ -3,43 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Profile - Home</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">
+    <title>Student Profile</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <header>
-        <div class="nav-container">
-            <div class="brand-title">Student Profile</div>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Profile</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>Student Profile</h1>
+        <nav>
+            <a href="#profile">Profile</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
-    <main>
-        <section class="card profile-hero">
-            
-            <h1>Ethan Kyle Anggot</h1>
-            <p class="tagline">Aspiring Mobile & Web Developer</p>
-            <p>Welcome to my mobile application profile! I am a passionate Information Technology student specializing in cross-platform mobile development, clean UI/UX designs, and modern web software architecture.</p>
-            
-            <div class="quick-nav">
-                <a href="about.html" class="btn-link">Learn More About Me</a>
-                <a href="projects.html" class="btn-link">View My Work</a>
+    <main class="container">
+  
+        <section id="profile" class="card">
+            <div class="profile-header">
+        
+                <div class="profile-info">
+                    <h2 id="display-fullname">Ethan Kyle Anggot</h2>
+                    <p class="subtitle" id="display-course">BS Information Technology</p>
+                    <span class="badge" id="display-year">3rd Year</span>
+                </div>
             </div>
+            <button id="btn-edit-profile" class="btn primary">Edit Profile</button>
+        </section>
+
+      
+        <section id="edit-profile-modal" class="card hidden">
+            <h2>Edit Profile</h2>
+            
+            <div id="validation-alert" class="alert hidden"></div>
+
+            <form id="profile-form">
+                <div class="form-group">
+                    <label for="input-fullname">Full Name *</label>
+                    <input type="text" id="input-fullname" placeholder="Enter full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="input-course">Course *</label>
+                    <input type="text" id="input-course" placeholder="e.g., BS Information Technology">
+                </div>
+
+                <div class="form-group">
+                    <label for="input-year">Year Level *</label>
+                    <select id="input-year">
+                        <option value="">Select Year Level</option>
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-about">About Me *</label>
+                    <textarea id="input-about" rows="4" placeholder="Tell us about yourself..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-skills">Skills (Comma-separated) *</label>
+                    <input type="text" id="input-skills" placeholder="e.g., JavaScript, HTML/CSS, Cordova">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="btn-save" class="btn primary">Save Changes</button>
+                    <button type="button" id="btn-cancel" class="btn secondary">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+
+        <section id="about" class="card">
+            <h3>About Me</h3>
+            <p id="display-about">Loading about information...</p>
+        </section>
+
+    
+        <section id="skills" class="card">
+            <h3>Skills</h3>
+            <ul id="display-skills" class="skills-list">
+                <!-- Dynamically populated via JS -->
+            </ul>
+        </section>
+
+     
+        <section id="projects" class="card">
+            <h3>Projects</h3>
+            <p>Activity 1 to Activity 5 - Mobile Application Development</p>
+        </section>
+
+      
+        <section id="contact" class="card">
+            <h3>Contact Me</h3>
+            <p>Email: <a href="mailto:student@example.com">student@example.com</a></p>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; Ethan Kyle Anggot. All Rights Reserved.</p>
-    </footer>
-
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
