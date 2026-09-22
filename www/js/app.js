@@ -13,9 +13,9 @@ function onDeviceReady() {
 
 
 const DEFAULT_PROFILE = {
-    fullname: "Juan Dela Cruz",
+    fullname: "Ethan Kyle Anggot",
     course: "BS Information Technology",
-    yearLevel: "4th Year",
+    yearLevel: "3rd Year",
     about: "Passionate IT student specializing in web and mobile app development.",
     skills: "JavaScript, HTML/CSS, Cordova, Git"
 };
