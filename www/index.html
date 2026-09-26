@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
     <title>Student Profile</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <header>
         <h1>Student Profile</h1>
         <nav>
@@ -19,38 +18,40 @@
             <a href="#contact">Contact</a>
         </nav>
     </header>
-
     <main class="container">
-  
         <section id="profile" class="card">
             <div class="profile-header">
-        
+                <div class="avatar-container">
+                    <img src="img/avatar.png" alt="Profile Picture" class="avatar" id="display-avatar">
+                    <button id="btn-change-photo" class="btn-photo-overlay" title="Change Profile Picture">
+                        📷
+                    </button>
+                </div>
                 <div class="profile-info">
                     <h2 id="display-fullname">Ethan Kyle Anggot</h2>
                     <p class="subtitle" id="display-course">BS Information Technology</p>
                     <span class="badge" id="display-year">3rd Year</span>
                 </div>
             </div>
-            <button id="btn-edit-profile" class="btn primary">Edit Profile</button>
+            <div class="button-group">
+                <button id="btn-edit-profile" class="btn primary">Edit Profile</button>
+                <button id="btn-camera" class="btn secondary">Change Profile Picture</button>
+            </div>
+            <div id="camera-alert" class="alert hidden"></div>
         </section>
 
-      
         <section id="edit-profile-modal" class="card hidden">
             <h2>Edit Profile</h2>
-            
             <div id="validation-alert" class="alert hidden"></div>
-
             <form id="profile-form">
                 <div class="form-group">
                     <label for="input-fullname">Full Name *</label>
                     <input type="text" id="input-fullname" placeholder="Enter full name">
                 </div>
-
                 <div class="form-group">
                     <label for="input-course">Course *</label>
                     <input type="text" id="input-course" placeholder="e.g., BS Information Technology">
                 </div>
-
                 <div class="form-group">
                     <label for="input-year">Year Level *</label>
                     <select id="input-year">
@@ -61,17 +62,14 @@
                         <option value="4th Year">4th Year</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="input-about">About Me *</label>
                     <textarea id="input-about" rows="4" placeholder="Tell us about yourself..."></textarea>
                 </div>
-
                 <div class="form-group">
                     <label for="input-skills">Skills (Comma-separated) *</label>
                     <input type="text" id="input-skills" placeholder="e.g., JavaScript, HTML/CSS, Cordova">
                 </div>
-
                 <div class="form-actions">
                     <button type="button" id="btn-save" class="btn primary">Save Changes</button>
                     <button type="button" id="btn-cancel" class="btn secondary">Cancel</button>
@@ -79,33 +77,26 @@
             </form>
         </section>
 
-
         <section id="about" class="card">
             <h3>About Me</h3>
             <p id="display-about">Loading about information...</p>
         </section>
 
-    
         <section id="skills" class="card">
             <h3>Skills</h3>
-            <ul id="display-skills" class="skills-list">
-                <!-- Dynamically populated via JS -->
-            </ul>
+            <ul id="display-skills" class="skills-list"></ul>
         </section>
 
-     
         <section id="projects" class="card">
             <h3>Projects</h3>
-            <p>Activity 1 to Activity 5 - Mobile Application Development</p>
+            <p>Activity 1 to Activity 6 - Mobile Application Development</p>
         </section>
 
-      
         <section id="contact" class="card">
             <h3>Contact Me</h3>
             <p>Email: <a href="mailto:student@example.com">20240031364@my.xu.edu.ph</a></p>
         </section>
     </main>
-
     <script src="cordova.js"></script>
     <script src="js/app.js"></script>
 </body>

@@ -1,47 +1,77 @@
-# Student Profile Cordova Application
+# Activity 6: Cordova Camera Plugin Integration
+A hybrid mobile application built using Apache Cordova that allows users to view, edit, and update a student profile, complete with live camera photo capture functionality and local storage persistence.
 
-A mobile-responsive Cordova web application built for managing a Student Profile dynamically using JavaScript and browser `localStorage`.
+# Features
+## Profile Management: View and update student profile details including Name, Course, Year Level, About section, and Skills.
 
-## Application Pages & Sections
-- **Profile:** Displays the student's primary information, photo, and year level with an Edit Profile option.
-- **About:** Displays a dynamic summary description of the student.
-- **Skills:** Lists student skills rendered as interactive chips.
-- **Projects:** Highlights completed course activities and mobile projects.
-- **Contact:** Provides email and contact details.
+## Camera Integration: Capture profile pictures using the native device camera (or web preview modal for browser testing) with retake and confirmation capabilities.
 
-## Profile Editing & JavaScript Functionality
-The application includes an **Edit Profile** feature:
-- Clicking **Edit Profile** reveals an input interface prepopulated with existing user data.
-- **Validation:** Ensures mandatory fields (`Full Name`, `Course`, `Year Level`, `About Me`, `Skills`) are not left empty. An error message appears if validation fails.
-- **Save Functionality:** Dynamically updates the DOM nodes without requiring a full page refresh.
-- **Cancel Functionality:** Closes the editing interface and discards any uncommitted field changes.
+## Data Persistence: Saves profile updates and avatar images locally using localStorage.
 
-## Local Data Storage (`localStorage`)
-- On startup, the application queries `localStorage` under the key `studentProfile`.
-- If profile data exists, it renders the stored details immediately.
-- If no data is present, default student details are loaded.
-- All saved edits permanently replace the dataset in `localStorage` to preserve state across session restarts.
+##Validation: Ensures all fields are filled before saving updates.
 
-## Responsive Design
-Built using flexible CSS Flexbox containers and viewport meta tags to provide a consistent viewing experience across Mobile, Tablet, and Desktop screen sizes.
+# Technical Stack
+## Framework: Apache Cordova
 
-## How to Run
-1. Ensure Node.js and Apache Cordova are installed.
-2. Clone this repository:
-   ```bash
-   git clone https://github.com/Ethan9333/Anggot_StudentProfile.git
+## Frontend: HTML5, CSS3, JavaScript (ES6)
 
+## Plugin: cordova-plugin-camera
 
-Screenshots
+# Project Structure
+www/
+├── css/
+│   └── style.css        App styling and camera overlay positioning
+├── js/
+│   └── app.js           App logic, local storage, and camera integration
+├── img/
+│   └── avatar.png       Default avatar placeholder
+└── index.html           Main application UI layout
+screenshots/             Activity submission screenshots
+config.xml               Cordova configuration file
 
-### Student Profile
-![Student Profile View](screenshots/activity-5-default.png)
+# Getting Started
+Prerequisites
+Ensure you have the following installed on your machine:
 
-### Edit Profile Interface
-![Edit Profile Form](screenshots/activity-5-edit-profile.png)
+Node.js (v14 or higher)
 
-### Updated Profile
-![Updated Profile View](screenshots/activity-5-updated-profile.png)
+Apache Cordova CLI (npm install -g cordova)
 
-### Contact Section
-![Contact View](screenshots/activity-5-contact.png)
+Android Studio (for Android build/emulation)
+
+# Installation & Setup
+## Clone the repository:
+git clone 
+cd
+
+## Add Cordova platforms:
+cordova platform add android
+cordova platform add browser
+
+## Install required plugins:
+cordova plugin add cordova-plugin-camera
+
+## Run the application:
+
+In Browser (Development Mode):
+cordova run browser
+
+On Android Device/Emulator:
+cordova run android
+
+# Submission Screenshots
+All screenshots demonstrating completed features are stored in the screenshots/ directory:
+
+activity-6-default.png - Initial student profile view.
+![pic](screenshots/act6_default.png)
+activity-6-camera.png - Active webcam/camera stream interface.
+![pic](screenshots/act6_camera.png)
+activity-6-captured.png - Photo capture preview with Use Photo / Retake choices.
+![pic](screenshots/act6_captured.png)
+activity-6-updated.png - Updated profile displaying the new photo and saved changes.
+![pic](screenshots/act6_updated.png)
+
+# Developer Info
+Student Name: Ethan Kyle Anggot
+
+Course & Year: BS Information Technology - 3rd Year
