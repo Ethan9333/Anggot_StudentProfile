@@ -1,77 +1,169 @@
-# Activity 6: Cordova Camera Plugin Integration
-A hybrid mobile application built using Apache Cordova that allows users to view, edit, and update a student profile, complete with live camera photo capture functionality and local storage persistence.
+# Student Profile Mobile Application — Activity 7
 
-# Features
-## Profile Management: View and update student profile details including Name, Course, Year Level, About section, and Skills.
+A full-stack, database-driven mobile application built with **Apache Cordova**, **Node.js/Express**, and **SQLite3**. Originally starting as a static profile display, this application has evolved into a secure, full-stack enterprise mobile app with database persistence, JWT authentication, camera access, dynamic CRUD operations, and responsive styling.
 
-## Camera Integration: Capture profile pictures using the native device camera (or web preview modal for browser testing) with retake and confirmation capabilities.
+---
 
-## Data Persistence: Saves profile updates and avatar images locally using localStorage.
+## 1. Project Description
+The Student Profile Application allows enrolled students to manage their academic profile directly from a cross-platform mobile interface. What began as a client-side prototype has evolved into a full-stack architecture where all student credentials, profile details, skills, and photos are stored in a persistent relational database (`SQLite3`). Access is restricted behind an authentication gateway, ensuring data isolation between students.
 
-##Validation: Ensures all fields are filled before saving updates.
+---
 
-# Technical Stack
-## Framework: Apache Cordova
+## 2. Application Pages & Sections
 
-## Frontend: HTML5, CSS3, JavaScript (ES6)
+- **Login Modal**: Acts as the gatekeeper to the application, requiring a Student ID and Password before revealing protected routes.
+- **Profile Page**: Displays primary student identity information, including full name, course, year level, bio, and profile picture.
+- **About Section**: Highlights background information and personal bio details about the student.
+- **Skills Section**: Renders an interactive list of technical and soft skills as visual chips.
+- **Projects Section**: Displays current or completed coursework projects associated with the student.
+- **Contact Section**: Features student contact pathways and location details.
 
-## Plugin: cordova-plugin-camera
+---
 
-# Project Structure
-www/
-├── css/
-│   └── style.css        App styling and camera overlay positioning
-├── js/
-│   └── app.js           App logic, local storage, and camera integration
-├── img/
-│   └── avatar.png       Default avatar placeholder
-└── index.html           Main application UI layout
-screenshots/             Activity submission screenshots
-config.xml               Cordova configuration file
+## 3. Authentication
+Users access their profile by supplying their **Student ID** and **Password** in the login screen.
 
-# Getting Started
+### Authentication Flow
+```text
+Login Screen ──> Express Backend Authentication ──> JWT Generation ──> Protected Student Profile
+```
+The student submits their credentials via the Login Modal.
+
+The Node.js server verifies the hashed password against the database record using bcryptjs.
+
+Upon validation, the server generates a signed JSON Web Token (JWT).
+
+The client saves the token to session storage and accesses their private Student Profile.
+
+## 4. Student Profile Management
+### Authenticated students can perform the following actions:
+
+View Profile: View profile attributes loaded dynamically from the backend upon successful login.
+
+Edit Information: Click Edit Profile to unlock input fields for Name, Course, Year Level, About, and Skills.
+
+Save Changes: Submit edited fields via an HTTP PUT request to update database records permanently.
+
+Update Profile Picture: Click the camera overlay icon to capture a new picture using the device camera or webcam canvas.
+
+Log Out: Click Logout to clear the JWT session token, hide protected views, and return to the Login screen.
+
+## 5. Database Integration
+The system uses SQLite3 (database.sqlite) for reliable relational storage.
+
+### Stored Student Information
+1. Student ID (student_id - Unique Identifier)
+
+2. Hashed Password (password - Security Credential)
+
+3. Name (fullname)
+
+4. Course (course)
+
+5. Year Level (year_level)
+
+6. About Me (about)
+
+7. Skills (skills - Comma-separated or JSON list)
+
+8. Profile Picture (avatar - Base64 image payload or reference string)
+
+## 6. API / Backend Architecture
+Communication between the Cordova frontend and the Express backend is handled via asynchronous REST API calls over HTTP (fetch).
+```
+Cordova Application (HTML/JS)
+       │
+       ▼ (HTTP REST API with Bearer Token)
+Node.js / Express Backend
+       │
+       ▼ (SQL Queries)
+SQLite Database (`database.sqlite`)
+```
+## 7. CRUD Operations
+• Create: Automatically seeds/registers initial student accounts and profile records in SQLite upon backend initialization.
+
+• Read: GET /api/profile retrieves authenticated student profile fields and renders them in the DOM.
+
+• Update: PUT /api/profile receives modified text fields or new Base64 camera images and updates the database row.
+
+• Delete: DELETE /api/profile (or administrative scripts) removes a designated test student record from the database.
+
+## 8. Camera Integration
+The camera functionality integrated in Activity 6 is fully retained:
+
+Mobile Devices: Accesses the native camera hardware via the standard cordova-plugin-camera API.
+
+Desktop Browsers: Uses a fallback HTML5 Canvas/Webcam stream modal to capture standard 400x400 photos.
+
+Database Bridge: Captured photos are converted to Base64 JPEG strings and persisted directly to the SQLite avatar column.
+
+## 9. Data Persistence
+Profile modifications remain available across sessions because all state changes are saved server-side in database.sqlite on disk:
+
+Closing or terminating the application
+
+Restarting the device or browser window
+
+Logging out and logging back in
+
+The browser's localStorage holds only the temporary JWT authentication token—all actual student profile data is re-fetched straight from SQLite on every login.
+
+## 10. Responsive Design
+The app is styled using flexible layouts (CSS Flexbox, Grid, and media queries) to adapt to different display viewports:
+
+Desktop: Centered card layout with fixed max-widths, clean padding, and side-by-side button alignments.
+
+Tablet: Expanded form layouts and responsive flex grids for skills and navigation elements.
+
+Mobile: Single-column vertical stacking, touch-friendly tap targets, and full-screen camera overlays.
+
+## 11. Security Measures
+Password Hashing: Passwords are encrypted using bcryptjs before database insertion—no plain text passwords are saved.
+
+No Hardcoded Secrets: Sensitive configuration, such as JWT secret keys, are managed through backend environment setup.
+
+Credential Protection: Database credentials and connection parameters are completely isolated on the server and never exposed to the client application.
+
+Token Authorization: Backend endpoints require a valid Bearer <JWT_TOKEN> header; unauthenticated requests receive 401 Unauthorized.
+
+## 12. How to Run
 Prerequisites
-Ensure you have the following installed on your machine:
-
 Node.js (v14 or higher)
 
 Apache Cordova CLI (npm install -g cordova)
 
-Android Studio (for Android build/emulation)
-
-# Installation & Setup
-## Clone the repository:
-git clone 
-cd
-
-## Add Cordova platforms:
-cordova platform add android
-cordova platform add browser
-
-## Install required plugins:
-cordova plugin add cordova-plugin-camera
-
-## Run the application:
-
-In Browser (Development Mode):
+### Steps to Execute
+Start the Backend Server:
+```
+cd server
+npm install
+npm start
+```
+Run the Cordova Mobile Application:
+Open a second terminal window in the project root:
+```
+cd <LastName>_StudentProfile
 cordova run browser
+```
 
-On Android Device/Emulator:
-cordova run android
+## 13. Test Accounts
+StudentID: 20210001
 
-# Submission Screenshots
-All screenshots demonstrating completed features are stored in the screenshots/ directory:
+Password: password123
 
-activity-6-default.png - Initial student profile view.
-![pic](screenshots/act6_default.png)
-activity-6-camera.png - Active webcam/camera stream interface.
-![pic](screenshots/act6_camera.png)
-activity-6-captured.png - Photo capture preview with Use Photo / Retake choices.
-![pic](screenshots/act6_captured.png)
-activity-6-updated.png - Updated profile displaying the new photo and saved changes.
-![pic](screenshots/act6_updated.png)
+## 14. App Screenshots
+## Login Page
+![pic](screenshots/act7_login.png)
 
-# Developer Info
-Student Name: Ethan Kyle Anggot
+## Student Profile
+![pic](screenshots/act7_studentprofile.png)
 
-Course & Year: BS Information Technology - 3rd Year
+## Edit Profile
+![pic](screenshots/act7_editprofile.png)
+
+## Camera
+![pic](screenshots/act7_camera.png)
+
+## Updated Profile
+![pic](screenshots/act7_updatedprofile.png)
+
